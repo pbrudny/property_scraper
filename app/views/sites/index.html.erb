@@ -14,8 +14,7 @@
   <tbody>
     <% @sites.each do |site| %>
       <tr>
-        <td><%= site.title %></td>
-        <td><%= site.url %></td>
+        <td><%= link_to site.title, site.url, target: :_blank %></td>
         <td><%= link_to 'Show', site %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>
         <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
