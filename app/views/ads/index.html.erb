@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ads</h1>
+<h1>Ads (<%= Ad.count %>)</h1>
 
 <table class="table table-hover">
   <thead>
@@ -20,7 +20,7 @@
     <% @ads.each do |ad| %>
       <tr>
         <td><%= ad.title %></td>
-        <td><%= ad.url %></td>
+        <td><%= link_to ad.url, ad.url, target: '_blank' %></td>
         <td><%= ad.phone %></td>
         <td><%= ad.price %></td>
         <td><%= ad.status %></td>

@@ -4,7 +4,7 @@ class AdsController < ApplicationController
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.all
+    @ads = Ad.order(:url)
   end
 
   # GET /ads/1

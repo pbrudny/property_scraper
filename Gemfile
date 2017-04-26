@@ -35,6 +35,7 @@ gem 'bootstrap'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rspec-rails'
 
 gem 'mechanize'
 gem 'nokogiri'
