@@ -32,6 +32,23 @@ module Scrapers
     def agent
       @agent ||= Mechanize.new { |agent| agent.user_agent_alias = 'Windows Chrome' }
     end
+
+    def get_phone_number(html_doc)
+      phone_url = 'https://www.olx.pt/ajax/misc/contact/phone/'
+      # This specific string contains an Ad's ID
+      str  = html_doc.xpath('//*[@id="contact-form"]/@action').to_s
+      # Extract the Ad's ID from the string
+      id   = str[/-ID.+?.html/].to_s.gsub("-ID", "").gsub(".html", "")
+      # Generate a link to get the phone number, example: https://www.olx.pt/ajax/misc/contact/phone/XYZWT/
+      link = phone_url + id + "/"
+      begin
+        page = agent.get(link)
+        return page.body.to_s[/([0-9]+\s?){3}/]
+      rescue Exception => e
+        page = e.page
+        return nil
+      end
+    end
   end
 end
 

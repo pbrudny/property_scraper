@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'ads#index'
+  resources :ads
   resources :price_ranges
   resources :districts
   resources :sites
