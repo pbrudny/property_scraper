@@ -2,7 +2,7 @@
 
 <h1>Ads</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
@@ -24,7 +24,7 @@
         <td><%= ad.phone %></td>
         <td><%= ad.price %></td>
         <td><%= ad.status %></td>
-        <td><%= ad.district %></td>
+        <td><%= ad.district.name %></td>
         <td><%= ad.type %></td>
         <td><%= link_to 'Show', ad %></td>
         <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
