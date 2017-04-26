@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @price_range.from %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @price_range.to %>
+</p>
+
+<%= link_to 'Edit', edit_price_range_path(@price_range) %> |
+<%= link_to 'Back', price_ranges_path %>

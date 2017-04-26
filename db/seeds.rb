@@ -8,12 +8,21 @@
 
 Site.create(
   [
-    {title: 'UniPlaces', url: 'https://www.uniplaces.com/pt/'},
-    {title: 'Idealista', url: 'https://www.idealista.pt/arrendar-quarto/lisboa-distrito/'},
-    {title: 'EasyQuarto', url: 'http://www.easyquarto.com.pt/portugal/lisboa-companheiros-de-quarto/anuncios/l'},
-    {title: 'CasaSapo', url: 'https://casa.sapo.pt/quartos'},
-    {title: 'BQuarto', url: 'http://www.bquarto.pt'},
-    {title: 'CustoJusto', url: 'http://www.custojusto.pt/'},
-    {title: 'Olx', url: 'https://www.olx.pt'}
+    { title: 'UniPlaces', url: 'https://www.uniplaces.com/pt/' },
+    { title: 'Idealista', url: 'https://www.idealista.pt/arrendar-quarto/lisboa-distrito/' },
+    { title: 'EasyQuarto', url: 'http://www.easyquarto.com.pt/portugal/lisboa-companheiros-de-quarto/anuncios/l' },
+    { title: 'CasaSapo', url: 'https://casa.sapo.pt/quartos' },
+    { title: 'BQuarto', url: 'http://www.bquarto.pt' },
+    { title: 'CustoJusto', url: 'http://www.custojusto.pt/' },
+    { title: 'Olx', url: 'https://www.olx.pt' }
   ]
 )
+
+District.create(
+  [
+    { name: 'Alfama' },
+    { name: 'Baixa' },
+    { name: 'Bairro Alto' }
+  ]
+)
+
