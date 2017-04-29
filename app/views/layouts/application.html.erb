@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PropertyScraper</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Property Scraper</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<header class="row">
+  <div class="col-3">
+    <div class="circle">
+      <br />
+      Best
+      <br />
+      Property
+      <br />
+      Scraper
+    </div>
+  </div>
+  <div class="col-5 links">
+    <%= link_to 'Ads', ads_path %>
+    <%= link_to 'Sites', sites_path %>
+    <%= link_to 'Districts', districts_path %>
+  </div>
+</header>
+<hr />
+<br class="clear" />
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<div class="container">
+  <%= yield %>
+</div>
 
-  <body>
-    <%= render 'layouts/navbar' %>
-    <%= yield %>
-  </body>
+</body>
 </html>
