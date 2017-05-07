@@ -11,13 +11,28 @@
 </p>
 
 <p>
+  <strong>Location:</strong>
+  <%= @ad.location %>
+</p>
+
+<p>
+  <strong>Offer ID:</strong>
+  <%= @ad.offer_id %>
+</p>
+
+<p>
+  <strong>Publicated at:</strong>
+  <%= @ad.publicated_at %>
+</p>
+
+<p>
   <strong>Phone:</strong>
   <%= @ad.phone %>
 </p>
 
 <p>
   <strong>Price:</strong>
-  <%= @ad.price %>
+  <%= @ad.price %> €
 </p>
 
 <p>
@@ -32,7 +47,12 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @ad.type %>
+  <%= @ad.tipologia %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ad.description %>
 </p>
 
 <%= link_to 'Edit', edit_ad_path(@ad) %> |
