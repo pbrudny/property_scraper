@@ -5,9 +5,14 @@ class CreateAds < ActiveRecord::Migration[5.0]
       t.string :url
       t.string :phone
       t.integer :price
-      t.string :status
       t.belongs_to :district, foreign_key: true
-      t.string :type
+      t.string :offer_id
+      t.string :tipologia
+      t.text :description
+      t.string :status
+      t.string :image_path
+      t.string :location
+      t.datetime :publicated_at
 
       t.timestamps
     end
