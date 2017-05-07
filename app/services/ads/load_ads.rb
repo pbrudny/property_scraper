@@ -1,4 +1,4 @@
-require 'scrapers/olx_scraper'
+require 'scrapers/olx/scrape_all'
 
 module Ads
   class LoadAds
