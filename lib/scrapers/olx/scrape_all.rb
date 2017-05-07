@@ -6,6 +6,7 @@ module Scrapers
       end
 
       def call
+        new_ads = []
         (1..2).each do |page_index|
           puts "Page: #{page_index}"
           ads_links(page_index).each do |link|
@@ -13,15 +14,20 @@ module Scrapers
               puts "Link existed! #{link.value}"
             else
               puts "Adding link #{link}"
-              create_ad(Parser.new(link, agent), link)
+              new_ads << create_ad(Parser.new(link, agent), link)
             end
           end
         end
+        notify_about_new(new_ads) if new_ads.present?
       end
 
       private
 
       attr_accessor :url
+
+      def notify_about_new(new_ads)
+        byebug
+      end
 
       def url_with_page(page_index)
         "#{url}&page=#{page_index}"

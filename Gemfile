@@ -46,6 +46,7 @@ gem 'nokogiri'
 gem 'openssl'
 
 gem 'ransack'
+gem 'sendinblue'
 
 group :test do
   gem 'vcr'
