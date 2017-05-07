@@ -2,15 +2,19 @@ module Scrapers
   module Olx
     class ScrapeAll
       def initialize
-        self.url = 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/encarnazao/?search%5Bfilter_enum_tipologia%5D%5B0%5D=t1&search%5Bfilter_enum_tipologia%5D%5B1%5D=t2&search%5Bdescription%5D=1'
+        self.url = Site.find_by(title: 'Olx').url
       end
 
       def call
         (1..2).each do |page_index|
+          puts "Page: #{page_index}"
           ads_links(page_index).each do |link|
-            puts "Adding link #{link}"
-            parser = Parser.new(link)
-            create_ad(parser, link)
+            if Ad.find_by(url: link.value).present?
+              puts 'Link existed!'
+            else
+              puts "Adding link #{link}"
+              create_ad(Parser.new(link), link)
+            end
           end
         end
       end

@@ -20,11 +20,16 @@ ActiveRecord::Schema.define(version: 20170426091330) do
     t.string   "url"
     t.string   "phone"
     t.integer  "price"
-    t.string   "status"
     t.integer  "district_id"
-    t.string   "type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "offer_id"
+    t.string   "tipologia"
+    t.text     "description"
+    t.string   "status"
+    t.string   "image_path"
+    t.string   "location"
+    t.datetime "publicated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["district_id"], name: "index_ads_on_district_id", using: :btree
   end
 

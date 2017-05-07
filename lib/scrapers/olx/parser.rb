@@ -24,7 +24,7 @@ module Scrapers
       def publicated_at
         raw_date = html_doc.xpath('//div[contains(@class, "offer-titlebox__details")]/em/text()')
         date = raw_date.to_s.strip.gsub(',','').split
-        Time.parse "#{date[5]} #{eng_month[date[4]]} #{date[3]} #{date[2]}"
+        DateTime.parse "#{date[5]} #{eng_month[date[4]]} #{date[3]} #{date[2]}"
       end
 
       def eng_month
@@ -65,11 +65,8 @@ module Scrapers
 
       def phone_number
         phone_url = 'https://www.olx.pt/ajax/misc/contact/phone/'
-        # This specific string contains an Ad's ID
         str  = html_doc.xpath('//*[@id="contact-form"]/@action').to_s
-        # Extract the Ad's ID from the string
         id   = str[/-ID.+?.html/].to_s.gsub("-ID", "").gsub(".html", "")
-        # Generate a link to get the phone number, example: https://www.olx.pt/ajax/misc/contact/phone/XYZWT/
         link = phone_url + id + "/"
         begin
           page = agent.get(link)
@@ -94,7 +91,3 @@ module Scrapers
     end
   end
 end
-
-
-# require 'scrapers/olx_scraper'
-# Scrapers::OlxScraper.new.call
