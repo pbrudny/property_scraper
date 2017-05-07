@@ -5,13 +5,13 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Phone</th>
-      <th>Price</th>
-      <th>Status</th>
-      <th>District</th>
-      <th>Type</th>
-      <th>Publicated at</th>
+      <th><%= sort_link(@q, :title) %></th>
+      <th><%= sort_link(@q, :phone) %></th>
+      <th><%= sort_link(@q, :price) %></th>
+      <th><%= sort_link(@q, :status) %></th>
+      <th><%= sort_link(@q, :district) %></th>
+      <th><%= sort_link(@q, :tipologia) %></th>
+      <th><%= sort_link(@q, :publicated_at) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>

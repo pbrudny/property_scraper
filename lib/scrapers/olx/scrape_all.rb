@@ -10,10 +10,10 @@ module Scrapers
           puts "Page: #{page_index}"
           ads_links(page_index).each do |link|
             if Ad.find_by(url: link.value).present?
-              puts 'Link existed!'
+              puts "Link existed! #{link.value}"
             else
               puts "Adding link #{link}"
-              create_ad(Parser.new(link), link)
+              create_ad(Parser.new(link, agent), link)
             end
           end
         end
@@ -24,13 +24,13 @@ module Scrapers
       attr_accessor :url
 
       def url_with_page(page_index)
-        url << "&page=#{page_index}"
+        "#{url}&page=#{page_index}"
       end
 
       def ads_links(page_index)
         html_data = open(url_with_page(page_index))
         nokogiri_object = Nokogiri::HTML(html_data)
-        @ads_links ||= nokogiri_object.xpath('//h3[@class="x-large lheight20 margintop5"]/a/@href')
+        nokogiri_object.xpath('//h3[@class="x-large lheight20 margintop5"]/a/@href')
       end
 
       def create_ad(parser, link)
@@ -47,6 +47,10 @@ module Scrapers
           image_path: 'TODO',
           location: parser.location
         )
+      end
+
+      def agent
+        @agent ||= Mechanize.new { |agent| agent.user_agent_alias = 'Windows Chrome' }
       end
     end
   end

@@ -4,7 +4,8 @@ class AdsController < ApplicationController
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.order(:url)
+    @q = Ad.ransack(params[:q])
+    @ads = @q.result(distinct: true)
   end
 
   # GET /ads/1

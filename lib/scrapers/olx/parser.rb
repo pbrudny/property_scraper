@@ -1,8 +1,9 @@
 module Scrapers
   module Olx
     class Parser
-      def initialize(link)
+      def initialize(link, agent)
         self.link = link
+        self.agent = agent
       end
 
       def tipologia
@@ -79,14 +80,10 @@ module Scrapers
 
       private
 
-      attr_accessor :link
+      attr_accessor :link, :agent
 
       def html_doc
         @html_doc ||= Nokogiri::HTML(agent.get(link.to_s).body, 'UTF-8')
-      end
-
-      def agent
-        @agent ||= Mechanize.new { |agent| agent.user_agent_alias = 'Windows Chrome' }
       end
     end
   end

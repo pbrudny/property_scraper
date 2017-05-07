@@ -45,6 +45,8 @@ gem 'mechanize'
 gem 'nokogiri'
 gem 'openssl'
 
+gem 'ransack'
+
 group :test do
   gem 'vcr'
   gem 'webmock'
