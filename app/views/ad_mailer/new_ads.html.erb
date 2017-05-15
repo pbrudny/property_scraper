@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Hey, <%= @user.name %></h1>
+<p>
+  There are <%= @ads.count %> new apartments for you
+</p>
+<% @ads.each do |ad| %>
+    <p>
+      <%= link_to ad.title, ad.url, target: '_blank' %>
+    </p>
+<% end %>
+
+<p>Have a great day!</p>
+</body>
+</html>

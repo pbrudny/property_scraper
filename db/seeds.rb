@@ -18,11 +18,24 @@ Site.create(
   ]
 )
 
+SearchLink.create(
+  [
+    { name: 'Basic', url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/encarnazao/?search%5Bfilter_enum_tipologia%5D%5B0%5D=t1&search%5Bfilter_enum_tipologia%5D%5B1%5D=t2&search%5Bdescription%5D=1', site: Site.find_by(title: 'Olx') }
+  ]
+)
+
+
 District.create(
   [
     { name: 'Alfama' },
     { name: 'Baixa' },
     { name: 'Bairro Alto' }
+  ]
+)
+
+User.create(
+  [
+    { name: 'Piotr', email: 'pbrudny@gmail.com' }
   ]
 )
 

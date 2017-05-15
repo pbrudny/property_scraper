@@ -1,8 +1,8 @@
 module Scrapers
   module Olx
     class ScrapeAll
-      def initialize
-        self.url = Site.find_by(title: 'Olx').url
+      def initialize(search_link = SearchLink.first)
+        self.url = search_link.url
       end
 
       def call
@@ -26,7 +26,7 @@ module Scrapers
       attr_accessor :url
 
       def notify_about_new(new_ads)
-        byebug
+        AdMailer.new_ads(new_ads).deliver_later
       end
 
       def url_with_page(page_index)

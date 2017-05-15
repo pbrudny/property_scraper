@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @search_link.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @search_link.url %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @search_link.site %>
+</p>
+
+<%= link_to 'Edit', edit_search_link_path(@search_link) %> |
+<%= link_to 'Back', search_links_path %>

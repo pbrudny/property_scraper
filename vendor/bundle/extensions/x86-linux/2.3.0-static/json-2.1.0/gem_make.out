@@ -1,0 +1,13 @@
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/json-2.1.0/ext/json
+/home/pbrudny/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20170515-6922-1kz656d.rb extconf.rb
+creating Makefile
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nie ma nic do zrobienia w `all'.
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

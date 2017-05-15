@@ -9,6 +9,14 @@
   <strong>Url:</strong>
   <%= link_to @site.url, @site.url, target: '_blank' %>
 </p>
+<h2>
+  Search Links
+</h2>
+<% @search_links.each do |link| %>
+    <%= link %>
+<% end %>
+
+<%= link_to 'New Search Link', new_site_search_link_path(@site) %>
 
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>

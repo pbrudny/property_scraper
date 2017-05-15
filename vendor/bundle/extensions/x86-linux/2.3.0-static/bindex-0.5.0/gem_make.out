@@ -1,0 +1,15 @@
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+/home/pbrudny/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20170515-6922-zhsjqx.rb extconf.rb
+creating Makefile
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/pbrudny/railsy/property_scraper/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20170515-6922-9g19g6/bindex

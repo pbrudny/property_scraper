@@ -1,0 +1,11 @@
+Welcome to example.com, <%= @user.name %>
+===============================================
+
+Hey, <%= @user.name %>
+  There are <%= @ads.count %> new apartments for you
+
+<% @ads.each do |ad| %>
+      <%= ad.url %>
+<% end %>
+
+Have a great day!
