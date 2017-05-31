@@ -14,7 +14,7 @@ module Scrapers
               puts "Link existed! #{link.value}"
             else
               puts "Adding link #{link}"
-              if (new_ad = create_ad(Parser.new(link, agent), link)).valid?
+              if (new_ad = create_ad(Scrapers::Olx::Parser.new(link, agent), link)).valid?
                 new_ads << new_ad
               end
             end
