@@ -1,3 +1,5 @@
+require 'scrapers/olx/scrape_all'
+
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
@@ -60,6 +62,11 @@ class AdsController < ApplicationController
       format.html { redirect_to ads_url, notice: 'Ad was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def load
+    Scrapers::Olx::ScrapeAll.new.call
+    redirect_to ads_url, notice: 'Loaded latest ads'
   end
 
   private

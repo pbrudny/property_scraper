@@ -14,7 +14,9 @@ module Scrapers
               puts "Link existed! #{link.value}"
             else
               puts "Adding link #{link}"
-              new_ads << create_ad(Parser.new(link, agent), link)
+              if (new_ad = create_ad(Parser.new(link, agent), link)).valid?
+                new_ads << new_ad
+              end
             end
           end
         end
@@ -26,7 +28,7 @@ module Scrapers
       attr_accessor :url
 
       def notify_about_new(new_ads)
-        AdMailer.new_ads(new_ads).deliver_later
+        AdMailer.new_ads(new_ads).deliver_now
       end
 
       def url_with_page(page_index)

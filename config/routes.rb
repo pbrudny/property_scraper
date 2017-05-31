@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :users
   root 'ads#index'
-  resources :ads
+  resources :ads do
+    collection do
+      get 'load'
+    end
+  end
   resources :price_ranges
   resources :districts
   resources :search_links
