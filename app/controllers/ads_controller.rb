@@ -1,4 +1,4 @@
-require 'scrapers/olx/scrape_all'
+require 'scrapers/olx/scraper'
 
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]

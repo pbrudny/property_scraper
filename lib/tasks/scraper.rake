@@ -1,4 +1,4 @@
-require 'scrapers/olx/scrape_all'
+require 'scrapers/olx/scraper'
 
 namespace :scraper do
   desc 'Scrape property ads from OLX'
