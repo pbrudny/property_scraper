@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :statuses
   resources :notes
   resources :users
   root 'ads#index'
