@@ -12,38 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :url %>
-    <%= f.text_field :url %>
-  </div>
-
-  <div class="field">
     <%= f.label :phone %>
     <%= f.text_field :phone %>
   </div>
 
   <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
-  </div>
-
-  <div class="field">
     <%= f.label :status %>
     <%= f.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= f.label :district_id %>
-    <%= f.select :district_id, District.all.map { |d| [d.name, d.id] } %>
   </div>
 
   <div class="actions">

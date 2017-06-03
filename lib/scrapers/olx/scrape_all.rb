@@ -63,6 +63,3 @@ module Scrapers
     end
   end
 end
-
-# require 'scrapers/olx_scraper'
-# Scrapers::Olx::ScrapeAll.new.call

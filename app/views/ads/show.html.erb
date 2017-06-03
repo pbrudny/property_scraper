@@ -7,7 +7,7 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @ad.url %>
+  <%= link_to @ad.url, @ad.url, target: '_blank' %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <strong>Publicated at:</strong>
-  <%= @ad.publicated_at %>
+  <%= @ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %>
 </p>
 
 <p>
@@ -52,7 +52,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @ad.description %>
+  <%= @ad.description.html_safe %>
 </p>
 
 <%= link_to 'Edit', edit_ad_path(@ad) %> |
