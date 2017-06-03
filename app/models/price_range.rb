@@ -1,2 +1,0 @@
-class PriceRange < ApplicationRecord
-end

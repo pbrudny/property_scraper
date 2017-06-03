@@ -9,7 +9,6 @@ class CreateAds < ActiveRecord::Migration[5.0]
       t.string :offer_id
       t.string :tipologia
       t.text :description
-      t.string :status
       t.string :image_path
       t.string :location
       t.datetime :publicated_at
