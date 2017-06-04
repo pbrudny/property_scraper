@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :alerts
   resources :statuses
   resources :notes
   resources :users
@@ -10,8 +11,10 @@ Rails.application.routes.draw do
   end
   resources :price_ranges
   resources :districts
-  resources :search_links
-  resources :sites
+
+  resources :sites do
+    resources :search_links
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

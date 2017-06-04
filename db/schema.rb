@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603121554) do
+ActiveRecord::Schema.define(version: 20170603121839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20170603121554) do
     t.integer  "search_link_id", null: false
     t.integer  "status_id",      null: false
     t.index ["district_id"], name: "index_ads_on_district_id", using: :btree
+  end
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer  "search_link_id"
+    t.string   "email"
+    t.string   "frequency"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["search_link_id"], name: "index_alerts_on_search_link_id", using: :btree
   end
 
   create_table "districts", force: :cascade do |t|
@@ -80,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170603121554) do
   end
 
   add_foreign_key "ads", "districts"
+  add_foreign_key "alerts", "search_links"
   add_foreign_key "notes", "ads"
   add_foreign_key "search_links", "districts"
   add_foreign_key "search_links", "sites"

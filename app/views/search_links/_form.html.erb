@@ -1,4 +1,4 @@
-<%= form_for(@search_link) do |f| %>
+<%= form_for(@search_link, url: site_search_link_path(@site)) do |f| %>
   <% if search_link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(search_link.errors.count, "error") %> prohibited this search_link from being saved:</h2>

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p><%= link_to '<- Back', sites_path %></p>
 
 <p>
   <strong>Title:</strong>
@@ -9,14 +10,54 @@
   <strong>Url:</strong>
   <%= link_to @site.url, @site.url, target: '_blank' %>
 </p>
+
+<br>
+
 <h2>
   Search Links
 </h2>
-<% @search_links.each do |link| %>
-    <%= link %>
-<% end %>
+<table class="table table-hover">
+  <tbody>
+    <% @search_links.each do |link| %>
+        <tr>
+          <td> <%= link.name %></td>
+          <td><%= link_to 'Destroy', [@site, link], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td> <%= link_to link.url, link.url, target: '_blank' %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Search Link', new_site_search_link_path(@site) %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Add a search link
+</button>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Add a search link</h4>
+      </div>
+
+      <%= simple_form_for @search_link, url: site_search_links_path(@site) do |f| %>
+          <div class="modal-body">
+            <%= f.input :name %>
+            <%= f.input :url %>
+          </div>
+
+          <div class="modal-footer">
+            <button type='button' class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%=f.submit 'Add a Search Link', class: 'btn btn-primary' %>
+
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>

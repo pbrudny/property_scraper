@@ -11,7 +11,7 @@
       <th><%= sort_link(@q, :phone) %></th>
       <th><%= sort_link(@q, :price) %></th>
       <th><%= sort_link(@q, :status) %></th>
-      <th><%= sort_link(@q, :district) %></th>
+      <th><%= sort_link(@q, :search_link_id) %></th>
       <th><%= sort_link(@q, :tipologia) %></th>
       <th><%= sort_link(@q, :publicated_at) %></th>
       <th colspan="3"></th>
@@ -24,8 +24,8 @@
         <td><%= link_to ad.title, ad.url, target: '_blank' %></td>
         <td><%= ad.phone %></td>
         <td><%= ad.price %> €</td>
-        <td><%= ad.status %></td>
-        <td><%= ad.district.name %></td>
+        <td><%= ad.status.name %></td>
+        <td><%= ad.search_link.name %></td>
         <td><%= ad.tipologia %></td>
         <td><%= ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %></td>
         <td><%= link_to 'Show', ad %></td>

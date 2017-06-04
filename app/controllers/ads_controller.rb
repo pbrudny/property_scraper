@@ -1,5 +1,3 @@
-require 'scrapers/olx/scraper'
-
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
@@ -48,7 +46,7 @@ class AdsController < ApplicationController
   end
 
   def load
-    Scrapers::Olx::ScrapeAll.new.call
+    Ads::LoadAds.new.call
     redirect_to ads_url, notice: 'Loaded latest ads'
   end
 

@@ -6,6 +6,8 @@ class SitesController < ApplicationController
   end
 
   def show
+    @search_links = @site.search_links
+    @search_link = SearchLink.new
   end
 
   def new

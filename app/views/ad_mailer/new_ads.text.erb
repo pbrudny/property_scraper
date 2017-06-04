@@ -2,10 +2,13 @@ Welcome to Property Scraper, <%= @user.name %>
 ===============================================
 
 Hey, <%= @user.name %>
-  There are <%= @ads.count %> new apartments for you
+  There are <%= @ads_number %> new apartments for you
 
-<% @ads.each do |ad| %>
+<% @search_link_with_ads.each do |link_name, ads| %>
+  <%= link_name %>
+    <% ads.each do |ad| %>
       <%= ad.url %>
+    <% end %>
 <% end %>
 
 Have a great day!
