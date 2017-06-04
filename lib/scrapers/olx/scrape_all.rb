@@ -17,6 +17,8 @@ module Scrapers
               puts "Adding link #{link}"
               if (new_ad = create_ad(Scrapers::Olx::Parser.new(link, agent), link)).valid?
                 new_ads << new_ad
+              else
+                puts "Invalid: #{new_ad.errors.full_messages} "
               end
             end
           end
