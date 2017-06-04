@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603121839) do
+ActiveRecord::Schema.define(version: 20170604214729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170603121839) do
     t.datetime "updated_at",     null: false
     t.integer  "search_link_id", null: false
     t.integer  "status_id",      null: false
+    t.integer  "load_id",        null: false
     t.index ["district_id"], name: "index_ads_on_district_id", using: :btree
   end
 
@@ -47,6 +48,12 @@ ActiveRecord::Schema.define(version: 20170603121839) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "loads", force: :cascade do |t|
+    t.text     "errors_list", default: [],              array: true
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "notes", force: :cascade do |t|

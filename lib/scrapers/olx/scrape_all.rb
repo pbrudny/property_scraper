@@ -1,9 +1,11 @@
 module Scrapers
   module Olx
     class ScrapeAll
-      def initialize(search_link)
+      def initialize(search_link, load)
         self.search_link = search_link
         self.url = search_link.url
+        self.load = load
+        @problems = []
       end
 
       def call
@@ -18,17 +20,18 @@ module Scrapers
               if (new_ad = create_ad(Scrapers::Olx::Parser.new(link, agent), link)).valid?
                 new_ads << new_ad
               else
-                puts "Invalid: #{new_ad.errors.full_messages} "
+                @problems << ["Scraping #{link.value} with errors: #{new_ad.errors.full_messages} "]
               end
             end
           end
         end
+        load.update_attribute(:errors_list, @problems)
         new_ads
       end
 
       private
 
-      attr_accessor :url, :search_link
+      attr_accessor :url, :search_link, :load
 
       def url_with_page(page_index)
         "#{url}&page=#{page_index}"
@@ -55,6 +58,7 @@ module Scrapers
           offer_id: parser.offer_id,
           tipologia: 'T1',
           status: Status.first,
+          load_id: load.id,
           description: parser.description,
           publicated_at: parser.publicated_at,
           image_path: 'TODO',
