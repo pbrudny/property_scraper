@@ -3,7 +3,7 @@ class LoadsController < ApplicationController
 
   # GET /loads
   def index
-    @loads = Load.all
+    @loads = Load.order(created_at: :desc)
   end
 
   # GET /loads/1
