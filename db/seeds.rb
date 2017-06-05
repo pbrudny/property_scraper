@@ -22,14 +22,20 @@ SearchLink.create(
   [
     {
       name: 'Misericordia',
-      url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/encarnazao/?search%5Bfilter_enum_tipologia%5D%5B0%5D=t1&search%5Bfilter_enum_tipologia%5D%5B1%5D=t2&search%5Bdescription%5D=1',
-      district: District.first,
+      url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/encarnazao/?search%5Bfilter_float_price%3Afrom%5D=700&search%5Bfilter_float_price%3Ato%5D=1250&search%5Bfilter_enum_tipologia%5D%5B0%5D=t1&search%5Bfilter_enum_tipologia%5D%5B1%5D=t2&search%5Bfilter_enum_condicao%5D%5B0%5D=usado&search%5Bfilter_enum_condicao%5D%5B1%5D=renovado&search%5Bfilter_enum_condicao%5D%5B2%5D=novo&search%5Bdescription%5D=1',
+      district: District.find_by(name: 'Bairro Alto'),
       site: Site.find_by(title: 'Olx')
     },
     {
-      name: 'Mafra',
-      url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/mafra/?search%5Bfilter_float_price%3Afrom%5D=700&search%5Bfilter_float_price%3Ato%5D=1250&search%5Bfilter_enum_tipologia%5D%5B0%5D=t2&search%5Bfilter_enum_tipologia%5D%5B1%5D=t1&search%5Bfilter_enum_condicao%5D%5B0%5D=novo&search%5Bfilter_enum_condicao%5D%5B1%5D=renovado&search%5Bfilter_enum_condicao%5D%5B2%5D=usado&search%5Bdescription%5D=1',
-      district: District.first,
+      name: 'Sant Maria Maior',
+      url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/castelo/?search%5Bfilter_float_price%3Afrom%5D=700&search%5Bfilter_float_price%3Ato%5D=1250&search%5Bfilter_enum_tipologia%5D%5B0%5D=t2&search%5Bfilter_enum_tipologia%5D%5B1%5D=t1&search%5Bfilter_enum_condicao%5D%5B0%5D=novo&search%5Bfilter_enum_condicao%5D%5B1%5D=renovado&search%5Bfilter_enum_condicao%5D%5B2%5D=usado&search%5Bdescription%5D=1',
+      district: District.find_by(name: 'Baixa'),
+      site: Site.find_by(title: 'Olx')
+    },
+    {
+      name: 'Sao Vicente',
+      url: 'https://www.olx.pt/imoveis/apartamento-casa-a-venda/apartamentos-arrenda/graca/?search%5Bfilter_float_price%3Afrom%5D=700&search%5Bfilter_float_price%3Ato%5D=1250&search%5Bfilter_enum_tipologia%5D%5B0%5D=t2&search%5Bfilter_enum_tipologia%5D%5B1%5D=t1&search%5Bfilter_enum_condicao%5D%5B0%5D=novo&search%5Bfilter_enum_condicao%5D%5B1%5D=renovado&search%5Bfilter_enum_condicao%5D%5B2%5D=usado&search%5Bdescription%5D=1',
+      district: District.find_by(name: 'Alfama'),
       site: Site.find_by(title: 'Olx')
     }
   ]
@@ -52,7 +58,7 @@ District.create(
 
 User.create(
   [
-    { name: 'Piotr', email: 'pbrudny@gmail.com' }
+    { name: 'Ernest', email: 'ernest.griszka@gmail.com' }
   ]
 )
 
