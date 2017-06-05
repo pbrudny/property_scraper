@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Errors:</strong>
-  <%= @load.errors %>
+  <strong>Ads:</strong>
+  <%= @load.ads.count %>
 </p>
 
-<%= link_to 'Edit', edit_load_path(@load) %> |
+
+<p>
+  <strong>Time:</strong>
+  <%= @load.created_at.strftime('%H:%M, %d.%m.%Y') %>
+</p>
+
+<h2><strong>Errors:</strong></h2>
+<% @load.errors_list.flatten.each do |e| %>
+  <p>
+    <%= e %>
+  </p>
+<% end %>
+
 <%= link_to 'Back', loads_path %>

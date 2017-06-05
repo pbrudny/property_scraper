@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :loads
+  resources :loads, only: [:index, :show]
   resources :alerts
   resources :statuses
   resources :notes

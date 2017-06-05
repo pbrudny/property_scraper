@@ -2,10 +2,11 @@
 
 <h1>Loads</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Errors</th>
+      <th>Ads</th>
+      <th>Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,15 +14,12 @@
   <tbody>
     <% @loads.each do |load| %>
       <tr>
-        <td><%= load.errors %></td>
+        <td><%= load.ads.count %></td>
+        <td><%= load.created_at.strftime('%H:%M, %d.%m.%Y') %></td>
         <td><%= link_to 'Show', load %></td>
-        <td><%= link_to 'Edit', edit_load_path(load) %></td>
-        <td><%= link_to 'Destroy', load, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Load', new_load_path %>
