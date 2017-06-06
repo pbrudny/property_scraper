@@ -8,7 +8,7 @@ Hey, <%= @user.name %>
     <% if ads.present? %>
         <%= link_name %>
         <% ads.each do |ad| %>
-          <%= ad.url %>
+          <%= link_to ad.title, ad %>
         <% end %>
     <% end %>
 <% end %>
