@@ -22,7 +22,7 @@
   <tbody>
     <% @ads.each do |ad| %>
       <tr>
-        <td><%= link_to(image_tag(ad.image_path, height: '80', width: '80') + ad.title, ad, target: '_blank') %></td>
+        <td><%= link_to(image_tag(ad.image_path, height: '100', width: '100'), ad, target: '_blank') %></td>
         <td><%= link_to ad.title, ad %></td>
         <td><%= ad.phone %></td>
         <td><%= ad.price %> €</td>
