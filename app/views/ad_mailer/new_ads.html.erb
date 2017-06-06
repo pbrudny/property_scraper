@@ -9,11 +9,13 @@
   There are <%= @ads_number %> new apartments for you
 </p>
 <% @search_link_with_ads.each do |link_name, ads| %>
-    <h2><%= link_name %></h2>
-    <% ads.each do |ad| %>
-        <p>
-          <%= link_to ad.title, ad.url, target: '_blank' %>
-        </p>
+    <% if ads.present? %>
+        <h2><%= link_name %></h2>
+        <% ads.each do |ad| %>
+            <p>
+              <%= link_to ad.title, ad.url, target: '_blank' %>
+            </p>
+        <% end %>
     <% end %>
 <% end %>
 

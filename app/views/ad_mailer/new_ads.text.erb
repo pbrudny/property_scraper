@@ -5,9 +5,11 @@ Hey, <%= @user.name %>
   There are <%= @ads_number %> new apartments for you
 
 <% @search_link_with_ads.each do |link_name, ads| %>
-  <%= link_name %>
-    <% ads.each do |ad| %>
-      <%= ad.url %>
+    <% if ads.present? %>
+        <%= link_name %>
+        <% ads.each do |ad| %>
+          <%= ad.url %>
+        <% end %>
     <% end %>
 <% end %>
 
