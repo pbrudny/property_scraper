@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604214729) do
+ActiveRecord::Schema.define(version: 20170606145557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20170604214729) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "ad_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ad_id"], name: "index_images_on_ad_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|
@@ -97,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170604214729) do
 
   add_foreign_key "ads", "districts"
   add_foreign_key "alerts", "search_links"
+  add_foreign_key "images", "ads"
   add_foreign_key "notes", "ads"
   add_foreign_key "search_links", "districts"
   add_foreign_key "search_links", "sites"

@@ -10,9 +10,12 @@ module Scrapers
         #TODO
       end
 
-      def image
-        #TODO
-        # get it from the main page
+      def main_image
+        html_doc.xpath("//div[@class='photo-handler rel inlblk']/img").first['src']
+      end
+
+      def images
+        html_doc.xpath("//div[@class='photo-glow']/img").map { |l| l['src'] }
       end
 
       def offer_id

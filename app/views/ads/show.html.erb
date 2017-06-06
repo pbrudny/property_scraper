@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h2>
   <%= @ad.title %>
-</p>
+</h2>
 
 <p>
   <strong>Url:</strong>
@@ -11,41 +10,29 @@
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @ad.location %>
+  <img src="<%= @ad.image_path %> ">
 </p>
 
 <p>
+  <strong>Location:</strong>
+  <%= @ad.location %> |
   <strong>Offer ID:</strong>
   <%= @ad.offer_id %>
 </p>
-
 <p>
+
   <strong>Publicated at:</strong>
-  <%= @ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %>
-</p>
-
-<p>
+  <%= @ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %> |
   <strong>Phone:</strong>
   <%= @ad.phone %>
 </p>
-
 <p>
   <strong>Price:</strong>
-  <%= @ad.price %> €
-</p>
-
-<p>
+  <%= @ad.price %> € |
   <strong>Status:</strong>
   <%= @ad.status.name %>
-</p>
-
-<p>
-  <strong>District:</strong>
+  <strong>District:</strong> |
   <%= @ad.district.name %>
-</p>
-
-<p>
   <strong>Type:</strong>
   <%= @ad.tipologia %>
 </p>
@@ -55,5 +42,67 @@
   <%= @ad.description.html_safe %>
 </p>
 
+<ul id="lightGallery">
+  <% @ad.images.each do |image| %>
+      <li data-src="<%= image.url %>">
+        <img src="<%= image.url %>" />
+      </li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_ad_path(@ad) %> |
 <%= link_to 'Back', ads_path %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#lightGallery").lightGallery(
+                {
+                    mode: 'slide',
+                    useCSS: true,
+                    cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+                    easing: 'linear', //'for jquery animation',//
+                    speed: 600,
+                    addClass: '',
+
+                    closable: true,
+                    loop: false,
+                    auto: false,
+                    pause: 4000,
+                    escKey: true,
+                    controls: true,
+                    hideControlOnEnd: false,
+
+                    preload: 2, //number of preload slides. will exicute only after the current slide is fully loaded. ex:// you clicked on 4th image and if preload = 1 then 3rd slide and 5th slide will be loaded in the background after the 4th slide is fully loaded.. if preload is 2 then 2nd 3rd 5th 6th slides will be preloaded.. ... ...
+                    showAfterLoad: true,
+                    selector: null,
+                    index: false,
+
+                    lang: {
+                        allPhotos: 'All photos'
+                    },
+                    counter: false,
+
+                    exThumbImage: false,
+                    thumbnail: true,
+                    showThumbByDefault:false,
+                    animateThumb: true,
+                    currentPagerPosition: 'middle',
+                    thumbWidth: 100,
+                    thumbMargin: 5,
+
+
+                    mobileSrc: false,
+                    mobileSrcMaxWidth: 640,
+                    swipeThreshold: 50,
+                    enableTouch: true,
+                    enableDrag: true,
+
+                    vimeoColor: 'CCCCCC',
+                    videoAutoplay: true,
+                    videoMaxWidth: '855px',
+
+                    dynamic: false,
+                    dynamicEl: []
+                }
+        );
+    });
+</script>

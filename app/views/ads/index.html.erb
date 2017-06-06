@@ -7,6 +7,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th></th>
       <th><%= sort_link(@q, :title) %></th>
       <th><%= sort_link(@q, :phone) %></th>
       <th><%= sort_link(@q, :price) %></th>
@@ -21,15 +22,18 @@
   <tbody>
     <% @ads.each do |ad| %>
       <tr>
-        <td><%= link_to ad.title, ad.url, target: '_blank' %></td>
+
+        <td><%= link_to(ad) do %>
+             <% image_tag ad.image_path, height: '80', width: '80' %>
+          <% end %>
+        </td>
+        <td><%= link_to ad.title, ad %></td>
         <td><%= ad.phone %></td>
         <td><%= ad.price %> €</td>
         <td><%= ad.status.name %></td>
         <td><%= ad.search_link.name %></td>
         <td><%= ad.tipologia %></td>
         <td><%= ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
       </tr>
     <% end %>
   </tbody>

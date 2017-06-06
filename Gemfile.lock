@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/stNicolaas/light-gallery-rails.git
+  revision: 97d892d0b4637ddae264514e2a44372853ff6f83
+  specs:
+    light_gallery_rails (1.1.4)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -230,6 +236,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   font-awesome-rails
   jquery-rails
+  light_gallery_rails!
   listen (~> 3.0.5)
   mechanize
   nokogiri

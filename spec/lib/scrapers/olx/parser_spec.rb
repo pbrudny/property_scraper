@@ -9,6 +9,7 @@ describe Scrapers::Olx::Parser do
     it { expect(parser.title).to eq 'T2 Lumiar' }
     it { expect(parser.offer_id).to eq '534879261' }
     it { expect(parser.price).to eq 700 }
+    it { expect(parser.main_image).to eq 'https://img01-olxpt.akamaized.net/img-olxpt/906804807_1_644x461_t2-lumiar-lisboa.jpg' }
     it do
       expect(parser.publicated_at).to eq 'Mon, 05 Jun 2017 00:00:00.000000000 +0000'
     end

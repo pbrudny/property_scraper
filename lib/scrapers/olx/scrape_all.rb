@@ -17,7 +17,9 @@ module Scrapers
               puts "Link existed! #{link.value}"
             else
               puts "Adding link #{link}"
-              if (new_ad = create_ad(Scrapers::Olx::Parser.new(link, agent), link)).valid?
+              parser = Scrapers::Olx::Parser.new(link, agent)
+              if (new_ad = create_ad(parser, link)).valid?
+                parser.images.each { |image_url| new_ad.images.create(url: image_url) }
                 new_ads << new_ad
               else
                 @problems << ["Scraping #{link.value} with errors: #{new_ad.errors.full_messages} "]
@@ -57,11 +59,11 @@ module Scrapers
           district: District.first,
           offer_id: parser.offer_id,
           tipologia: 'T1',
+          image_path: parser.main_image,
           status: Status.first,
           load_id: load.id,
           description: parser.description,
           publicated_at: parser.publicated_at,
-          image_path: 'TODO',
           location: parser.location
         )
       end
