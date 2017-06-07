@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :appointments
   resources :loads, only: [:index, :show]
   resources :alerts
   resources :statuses
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   root 'ads#index'
   resources :ads do
+    resources :appointments, controller: 'ads_appointments'
     collection do
       get 'load'
     end

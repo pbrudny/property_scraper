@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606145557) do
+ActiveRecord::Schema.define(version: 20170607132306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20170606145557) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["search_link_id"], name: "index_alerts_on_search_link_id", using: :btree
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date"
+    t.text     "address"
+    t.text     "note"
+    t.integer  "ad_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ad_id"], name: "index_appointments_on_ad_id", using: :btree
+    t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
 
   create_table "districts", force: :cascade do |t|
@@ -105,6 +117,8 @@ ActiveRecord::Schema.define(version: 20170606145557) do
 
   add_foreign_key "ads", "districts"
   add_foreign_key "alerts", "search_links"
+  add_foreign_key "appointments", "ads"
+  add_foreign_key "appointments", "users"
   add_foreign_key "images", "ads"
   add_foreign_key "notes", "ads"
   add_foreign_key "search_links", "districts"

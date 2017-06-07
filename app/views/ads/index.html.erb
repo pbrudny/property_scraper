@@ -9,7 +9,6 @@
     <tr>
       <th></th>
       <th><%= sort_link(@q, :title) %></th>
-      <th><%= sort_link(@q, :phone) %></th>
       <th><%= sort_link(@q, :price) %></th>
       <th><%= sort_link(@q, :status) %></th>
       <th><%= sort_link(@q, :search_link_id) %></th>
@@ -24,7 +23,6 @@
       <tr>
         <td><%= link_to(image_tag(ad.image_path, height: '100', width: '100'), ad, target: '_blank') %></td>
         <td><%= link_to ad.title, ad %></td>
-        <td><%= ad.phone %></td>
         <td><%= ad.price %> €</td>
         <td><%= ad.status.name %></td>
         <td><%= ad.search_link.name %></td>
