@@ -1,6 +1,6 @@
 class AdsAppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :set_ad, only: [:create, :update, :destroy]
 
   # GET /appointments/1
   def show
@@ -17,14 +17,12 @@ class AdsAppointmentsController < ApplicationController
 
   # POST /appointments
   def create
-    set_ad
     @ad.appointments.create(appointment_params.merge(user_id: User.first.id))
     redirect_to ad_path(@ad)
   end
 
   # PATCH/PUT /appointments/1
   def update
-    set_ad
     if @appointment.update(appointment_params.merge(ad_id: @ad.id))
       redirect_to @appointment, notice: 'Appointment was successfully updated.'
     else

@@ -9,8 +9,15 @@
 <p>
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    New appointment
+    Add appointment
   </button>
+
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myNoteModal">
+    Add note
+  </button>
+
+  <%= button_to 'Interesting', interesting_ad_path(@ad), method: :put, class: 'btn btn-primary btn-lg' %>
+  <%= button_to 'Not interesting', not_interesting_ad_path(@ad), method: :put, class: 'btn btn-primary btn-lg' %>
 
 </p>
 <p>
@@ -70,7 +77,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title" id="myModalLabel">Add a search link</h4>
+        <h4 class="modal-title" id="myModalLabel">Add an appointment</h4>
       </div>
 
       <%= simple_form_for @appointment, url: ad_appointments_path(@ad) do |f| %>
@@ -78,6 +85,32 @@
             <%= f.input :date %>
             <%= f.input :address %>
             <%= f.input :note %>
+          </div>
+
+          <div class="modal-footer">
+            <button type='button' class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%=f.submit 'Add', class: 'btn btn-primary' %>
+
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myNoteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myNoteModalLabel">Add a note</h4>
+      </div>
+
+      <%= simple_form_for @note, url: ad_notes_path(@ad) do |f| %>
+          <div class="modal-body">
+            <%= f.input :body %>
           </div>
 
           <div class="modal-footer">

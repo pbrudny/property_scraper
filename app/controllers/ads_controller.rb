@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :set_ad, only: [:show, :edit, :update, :not_interesting, :interesting]
 
   def index
     @q = Ad.ransack(params[:q])
@@ -8,6 +8,7 @@ class AdsController < ApplicationController
 
   def show
     @appointment = Appointment.new
+    @note = Note.new
   end
 
   def new
@@ -39,11 +40,14 @@ class AdsController < ApplicationController
     end
   end
 
-  def destroy
-    @ad.destroy
-    respond_to do |format|
-      format.html { redirect_to ads_url, notice: 'Ad was successfully destroyed.' }
-    end
+  def interesting
+    @ad.mark_interesting!
+    redirect_to ad_url(@ad), notice: 'Marked as interesting'
+  end
+
+  def not_interesting
+    @ad.mark_not_interesting!
+    redirect_to ad_url(@ad), notice: 'Marked as not interesting'
   end
 
   def load

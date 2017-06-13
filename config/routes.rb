@@ -3,13 +3,17 @@ Rails.application.routes.draw do
   resources :loads, only: [:index, :show]
   resources :alerts
   resources :statuses
-  resources :notes
   resources :users
   root 'ads#index'
   resources :ads do
     resources :appointments, controller: 'ads_appointments'
+    resources :notes, controller: 'ads_notes'
     collection do
       get 'load'
+    end
+    member do
+      put 'interesting'
+      put 'not_interesting'
     end
   end
   resources :price_ranges
