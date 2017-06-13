@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :appointments
   resources :loads, only: [:index, :show]
   resources :alerts
-  resources :statuses
   resources :users
   root 'ads#index'
   resources :ads do

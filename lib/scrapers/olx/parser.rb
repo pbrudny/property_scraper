@@ -11,7 +11,8 @@ module Scrapers
       end
 
       def main_image
-        html_doc.xpath("//div[@class='photo-handler rel inlblk']/img").first['src']
+        image = html_doc.xpath("//div[@class='photo-handler rel inlblk']/img")
+        image.first['src'] if image.present?
       end
 
       def images

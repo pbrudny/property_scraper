@@ -1,72 +1,104 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %>
 
 <h2>
-  <%= @ad.title %>
+  <%= @ad.title %> <strong>(<%= link_to 'Original ad', @ad.url, target: '_blank' %></strong>)
 </h2>
-  <% @ad.appointments.each do |appointment| %>
-    <span><%= link_to "Appointment on: #{appointment.date.strftime('%d.%m.%Y')}", [appointment.ad, appointment] %></span>
-  <% end %>
-<p>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Add appointment
-  </button>
 
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myNoteModal">
-    Add note
-  </button>
+<div class = 'container'>
+  <div class = 'jumbotron details'>
+      <div class = 'row'>
+        <div class = 'col col-md-2'>
+          <%= button_to 'Interesting', interesting_ad_path(@ad), method: :put, class: 'btn btn-primary' %>
+        </div>
+        <div class = 'col col-md-2'>
+          <%= button_to 'Not interesting', not_interesting_ad_path(@ad), method: :put, class: 'btn btn-danger' %>
+        </div>
+        <div class = 'col col-md-2'></div>
+        <div class = 'col col-md-3'>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+              Add appointment
+            </button>
+        </div>
+        <div class="col col-md-3">
+          <div class='row'>
+            <% @ad.appointments.each do |appointment| %>
+                <span><%= link_to "Appointment on: #{appointment.date.strftime('%d.%m.%Y')}", [appointment.ad, appointment] %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <hr>
+    <div class='row'>
+      <div class="col col-md-1">
+        <div id="lightGallery">
+          <% @ad.images_list.each do |image_url| %>
+              <div data-src="<%= image_url %>">
+                <img src="<%= image_url %>" class="img-rounded"  width="40" height="33"/>
+              </div>
+          <% end %>
+        </div>
+      </div>
 
-  <%= button_to 'Interesting', interesting_ad_path(@ad), method: :put, class: 'btn btn-primary btn-lg' %>
-  <%= button_to 'Not interesting', not_interesting_ad_path(@ad), method: :put, class: 'btn btn-primary btn-lg' %>
+      <div class="col col-md-4">
+        <img src="<%= @ad.image_path %> " class="img-rounded"  width="304" height="236">
+      </div>
 
-</p>
-<p>
-  <strong>Url:</strong>
-  <%= link_to @ad.url, @ad.url, target: '_blank' %>
-</p>
+      <div class="col col-md-3 details">
+        <div class='row'>
+          <strong>Location: </strong>
+          <%= @ad.location %>
+        </div>
+        <div class='row'>
+          <strong>Offer ID: </strong>
+          <%= @ad.offer_id %>
+        </div>
+        <div class='row'>
+            <strong>Publicated at: </strong>
+            <%= @ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %>
+        </div>
+        <div class='row'>
+          <strong>Phone: </strong>
+          <%= @ad.phone %>
+          <%= link_to 'Edit', edit_ad_path(@ad) %>
+        </div>
+        <div class='row'>
+          <strong>Price: </strong>
+          <%= @ad.price %> €
+        </div>
+        <div class='row'>
+          <strong>Status: </strong>
+          <%= @ad.status %>
+        </div>
+        <div class='row'>
+          <strong>District: </strong>
+          <%= @ad.district.name %>
+        </div>
+        <div class='row'>
+          <strong>Type: </strong>
+          <%= @ad.tipologia %>
+        </div>
+      </div>
+      <div class="col col-md-3">
+        <ul class="list-group">
+          <% @ad.notes.each do |note| %>
+            <li class="list-group-item"><%= note.body %></li>
+          <% end %>
+          <li class="list-group-item">
+            <button type="button" class="btn" data-toggle="modal" data-target="#myNoteModal">
+              Add note
+            </button>
+          </li>
+        </ul>
 
-<p>
-  <img src="<%= @ad.image_path %> ">
-</p>
+      </div>
+    </div>
+    <hr>
+  <div class='description'>
+     <%= @ad.description.html_safe %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
 
-<p>
-  <strong>Location:</strong>
-  <%= @ad.location %> |
-  <strong>Offer ID:</strong>
-  <%= @ad.offer_id %>
-</p>
-<p>
-
-  <strong>Publicated at:</strong>
-  <%= @ad.publicated_at.strftime('%H:%M, %d.%m.%Y') %> |
-  <strong>Phone:</strong>
-  <%= @ad.phone %>
-</p>
-<p>
-  <strong>Price:</strong>
-  <%= @ad.price %> € |
-  <strong>Status:</strong>
-  <%= @ad.status.name %>
-  <strong>District:</strong> |
-  <%= @ad.district.name %>
-  <strong>Type:</strong>
-  <%= @ad.tipologia %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @ad.description.html_safe %>
-</p>
-
-<ul id="lightGallery">
-  <% @ad.images.each do |image| %>
-      <li data-src="<%= image.url %>">
-        <img src="<%= image.url %>" />
-      </li>
-  <% end %>
-</ul>
 <%= link_to 'Back', ads_path %>
 
 <!-- Modal -->

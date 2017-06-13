@@ -41,14 +41,6 @@ SearchLink.create(
   ]
 )
 
-
-Status.create(
-  [
-    { name: 'new'},
-    { name: 'interesting'},
-    { name: 'not_interesting'}
-  ]
-)
 District.create(
   [
     { name: 'unknown' },

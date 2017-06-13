@@ -2,11 +2,10 @@ class Ad < ApplicationRecord
   belongs_to :load
   belongs_to :district
   belongs_to :search_link
-  belongs_to :status
 
-  has_many :images
-  has_many :appointments
-  has_many :notes
+  has_many :images, dependent: :destroy
+  has_many :appointments, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   validates :offer_id, uniqueness: true
   validates :search_link, presence: true
@@ -14,11 +13,17 @@ class Ad < ApplicationRecord
   validates :status, presence: true
   validates :load, presence: true
 
+  scope :not_rejected, -> { where.not status: 'not_interesting' }
+
   def mark_interesting!
-    update(status_id: Status.find_by(name: 'interesting'))
+    update(status: 'interesting')
   end
 
   def mark_not_interesting!
-    update(status_id: Status.find_by(name: 'not_interesting'))
+    update(status: 'not_interesting')
+  end
+
+  def images_list
+    [image_path] + images.map(&:url)
   end
 end

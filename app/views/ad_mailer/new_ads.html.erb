@@ -13,7 +13,11 @@
         <h2><%= link_name %></h2>
         <% ads.each do |ad| %>
             <p>
-              <%= link_to(image_tag(ad.image_path, height: '100', width: '100') + ad.title, ad, target: '_blank') %>
+              <% if ad.image_path.present? %>
+                <%= link_to(image_tag(ad.image_path, height: '100', width: '100') + ad.title, ad, target: '_blank') %>
+              <% else %>
+                  <%= link_to(ad.title, ad, target: '_blank') %>
+              <% end %>
             </p>
         <% end %>
     <% end %>

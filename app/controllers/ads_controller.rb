@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :not_interesting, :interesting]
 
   def index
-    @q = Ad.ransack(params[:q])
+    @q = Ad.not_rejected.ransack(params[:q])
     @ads = @q.result(distinct: true)
   end
 
@@ -47,7 +47,7 @@ class AdsController < ApplicationController
 
   def not_interesting
     @ad.mark_not_interesting!
-    redirect_to ad_url(@ad), notice: 'Marked as not interesting'
+    redirect_to ads_url
   end
 
   def load

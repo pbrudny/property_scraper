@@ -60,7 +60,7 @@ module Scrapers
           offer_id: parser.offer_id,
           tipologia: 'T1',
           image_path: parser.main_image,
-          status: Status.first,
+          status: 'new',
           load_id: load.id,
           description: parser.description,
           publicated_at: parser.publicated_at,
