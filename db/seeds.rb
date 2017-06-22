@@ -52,7 +52,7 @@ District.create(
 
 User.create(
   [
-    { name: 'Ernest', email: 'ernest.griszka@gmail.com' }
+    { name: 'Piotr', email: 'piotrek@therock.pl' }
   ]
 )
 
