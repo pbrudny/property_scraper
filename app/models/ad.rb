@@ -1,4 +1,6 @@
 class Ad < ApplicationRecord
+  STATUSES = %w(new interesting not_interesting rejected accepted)
+
   belongs_to :load
   belongs_to :district
   belongs_to :search_link

@@ -14,6 +14,9 @@
   <div class="field">
     <%= f.input :phone %>
   </div>
+  <div class="field">
+    <%= f.input :status, collection: Ad::STATUSES %>
+  </div>
 
   <div class="actions">
     <%= f.submit class: 'btn btn-default' %>
