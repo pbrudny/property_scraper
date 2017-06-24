@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     member do
       put 'interesting'
       put 'not_interesting'
+      put 'accepted'
+      put 'rejected'
     end
   end
   resources :price_ranges

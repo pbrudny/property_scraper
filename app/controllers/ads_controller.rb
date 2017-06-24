@@ -1,8 +1,8 @@
 class AdsController < ApplicationController
-  before_action :set_ad, only: [:show, :edit, :update, :not_interesting, :interesting]
+  before_action :set_ad, only: %i(show edit update not_interesting interesting accepted rejected)
 
   def index
-    @q = Ad.not_rejected.ransack(params[:q])
+    @q = Ad.new_ads.ransack(params[:q])
     @ads = @q.result(distinct: true)
   end
 
@@ -42,12 +42,22 @@ class AdsController < ApplicationController
 
   def interesting
     @ad.mark_interesting!
-    redirect_to ad_url(@ad), notice: 'Marked as interesting'
+    redirect_to ads_url, notice: 'Marked as interesting'
+  end
+
+  def accepted
+    @ad.mark_accepted!
+    redirect_to ads_url, notice: 'Marked as accepted'
   end
 
   def not_interesting
     @ad.mark_not_interesting!
-    redirect_to ads_url
+    redirect_to ads_url, notice: 'Marked as not interesting. Removed from the main list'
+  end
+
+  def rejected
+    @ad.mark_rejected!
+    redirect_to ads_url, notice: 'Marked as rejected. Removed from the main list'
   end
 
   def load

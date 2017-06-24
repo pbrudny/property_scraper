@@ -7,12 +7,21 @@
 <div class = 'container'>
   <div class = 'jumbotron details'>
       <div class = 'row'>
-        <div class = 'col col-md-2'>
-          <%= button_to 'Interesting', interesting_ad_path(@ad), method: :put, class: 'btn btn-primary' %>
-        </div>
-        <div class = 'col col-md-2'>
-          <%= button_to 'Not interesting', not_interesting_ad_path(@ad), method: :put, class: 'btn btn-danger' %>
-        </div>
+        <% if @ad.status == 'new' %>
+            <div class = 'col col-md-2'>
+              <%= button_to 'Interesting', interesting_ad_path(@ad), method: :put, class: 'btn btn-primary' %>
+            </div>
+            <div class = 'col col-md-2'>
+              <%= button_to 'Not interesting', not_interesting_ad_path(@ad), method: :put, class: 'btn btn-danger' %>
+            </div>
+        <% elsif @ad.status == 'interesting' %>
+            <div class = 'col col-md-2'>
+              <%= button_to 'Accepted', accepted_ad_path(@ad), method: :put, class: 'btn btn-primary' %>
+            </div>
+            <div class = 'col col-md-2'>
+              <%= button_to 'Rejected', rejected_ad_path(@ad), method: :put, class: 'btn btn-danger' %>
+            </div>
+        <% end %>
         <div class = 'col col-md-2'></div>
         <div class = 'col col-md-3'>
             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">

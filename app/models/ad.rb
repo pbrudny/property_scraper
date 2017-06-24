@@ -1,5 +1,5 @@
 class Ad < ApplicationRecord
-  STATUSES = %w(new interesting not_interesting rejected accepted)
+  STATUSES = %w(new interesting not_interesting not_available in_progress rejected accepted)
 
   belongs_to :load
   belongs_to :district
@@ -15,7 +15,8 @@ class Ad < ApplicationRecord
   validates :status, presence: true
   validates :load, presence: true
 
-  scope :not_rejected, -> { where.not status: 'not_interesting' }
+  scope :new_ads, -> { where status: %w(new) }
+  scope :interesting, -> { where status: %w(interesting) }
 
   def mark_interesting!
     update(status: 'interesting')
@@ -23,6 +24,14 @@ class Ad < ApplicationRecord
 
   def mark_not_interesting!
     update(status: 'not_interesting')
+  end
+
+  def mark_accepted!
+    update(status: 'accepted')
+  end
+
+  def mark_rejected!
+    update(status: 'rejected')
   end
 
   def images_list
