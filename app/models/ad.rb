@@ -18,6 +18,12 @@ class Ad < ApplicationRecord
   scope :new_ads, -> { where status: %w(new) }
   scope :interesting, -> { where status: %w(interesting) }
 
+  class << self
+    def ransackable_scopes(auth_object = nil)
+      %w(new_ads interesting)
+    end
+  end
+
   def mark_interesting!
     update(status: 'interesting')
   end

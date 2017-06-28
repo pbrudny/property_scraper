@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :set_ad, only: %i(show edit update not_interesting interesting accepted rejected)
 
   def index
-    @q = Ad.new_ads.ransack(params[:q])
+    @q = Ad.ransack(params[:q])
     @ads = @q.result(distinct: true)
   end
 
