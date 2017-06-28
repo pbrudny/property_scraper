@@ -21,6 +21,9 @@
             <div class = 'col col-md-2'>
               <%= button_to 'Rejected', rejected_ad_path(@ad), method: :put, class: 'btn btn-danger' %>
             </div>
+            <div class = 'col col-md-2'>
+              <%= button_to 'In progress', in_progress_ad_path(@ad), method: :put, class: 'btn btn-info' %>
+            </div>
         <% end %>
         <div class = 'col col-md-2'></div>
         <div class = 'col col-md-3'>

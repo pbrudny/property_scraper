@@ -36,6 +36,10 @@ class Ad < ApplicationRecord
     update(status: 'accepted')
   end
 
+  def mark_in_progress!
+    update(status: 'in_progress')
+  end
+
   def mark_rejected!
     update(status: 'rejected')
   end

@@ -1,7 +1,8 @@
 <h1>
   <%= link_to "New ads (#{Ad.new_ads.count})", ads_path %>|
   <%= link_to 'Interesting', ads_path(q: {status_eq: 'interesting'}) %>|
-  <%= link_to 'In progress', ads_path(q: {status_eq: 'in_progress'}) %>
+  <%= link_to 'In progress', ads_path(q: {status_eq: 'in_progress'}) %>|
+  <%= link_to 'Accepted', ads_path(q: {status_eq: 'accepted'}) %>
 </h1>
 
 <table class="table table-hover">

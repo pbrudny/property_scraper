@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       put 'interesting'
       put 'not_interesting'
+      put 'in_progress'
       put 'accepted'
       put 'rejected'
     end

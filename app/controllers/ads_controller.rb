@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_action :set_ad, only: %i(show edit update not_interesting interesting accepted rejected)
+  before_action :set_ad, only: %i(show edit update not_interesting interesting accepted rejected in_progress)
 
   def index
     @q = Ad.ransack(params[:q])
@@ -42,12 +42,17 @@ class AdsController < ApplicationController
 
   def interesting
     @ad.mark_interesting!
-    redirect_to ads_url, notice: 'Marked as interesting'
+    redirect_to ads_path(q: {status_eq: 'interesting'}), notice: 'Marked as interesting'
   end
 
   def accepted
     @ad.mark_accepted!
-    redirect_to ads_url, notice: 'Marked as accepted'
+    redirect_to ads_path(q: {status_eq: 'accepted'}), notice: 'Marked as accepted'
+  end
+
+  def in_progress
+    @ad.mark_in_progress!
+    redirect_to ads_path(q: {status_eq: 'in_progress'}), notice: 'Marked as in progress'
   end
 
   def not_interesting
