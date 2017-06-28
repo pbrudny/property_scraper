@@ -42,17 +42,17 @@ class AdsController < ApplicationController
 
   def interesting
     @ad.mark_interesting!
-    redirect_to ads_path(q: {status_eq: 'interesting'}), notice: 'Marked as interesting'
+    redirect_to ads_path, notice: 'Marked as interesting'
   end
 
   def accepted
     @ad.mark_accepted!
-    redirect_to ads_path(q: {status_eq: 'accepted'}), notice: 'Marked as accepted'
+    redirect_to ads_path, notice: 'Marked as accepted'
   end
 
   def in_progress
     @ad.mark_in_progress!
-    redirect_to ads_path(q: {status_eq: 'in_progress'}), notice: 'Marked as in progress'
+    redirect_to ads_path, notice: 'Marked as in progress'
   end
 
   def not_interesting

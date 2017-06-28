@@ -1,10 +1,25 @@
-<h1>
-  <%= link_to "New ads (#{Ad.new_ads.count})", ads_path %>|
-  <%= link_to 'Interesting', ads_path(q: {status_eq: 'interesting'}) %>|
-  <%= link_to 'In progress', ads_path(q: {status_eq: 'in_progress'}) %>|
-  <%= link_to 'Accepted', ads_path(q: {status_eq: 'accepted'}) %>
-</h1>
+<div class = 'container'>
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <%= active_link_to "New ads (#{Ad.new_ads.count})", ads_path, active: :exact, :wrap_tag => :li %>|
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "Interesting (#{Ad.interesting.count})", ads_path(q: {status_eq: 'interesting'}), active: :exact, :wrap_tag => :li %>|
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "In progress (#{Ad.in_progress.count})", ads_path(q: {status_eq: 'in_progress'}), active: :exact, :wrap_tag => :li %>|
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "Accepted (#{Ad.accepted.count})", ads_path(q: {status_eq: 'accepted'}), active: :exact, :wrap_tag => :li %>
+  </li>
+</ul>
+</div>
 
+  <!--<a class="nav-link active" href="#">Active</a>-->
+  <!--<a class="nav-link" href="#">Link</a>-->
+  <!--<a class="nav-link" href="#">Link</a>-->
+  <!--<a class="nav-link disabled" href="#">Disabled</a>-->
+<!--</nav>-->
 <table class="table table-hover">
   <thead>
     <tr>

@@ -49,6 +49,7 @@ gem 'mechanize'
 gem 'nokogiri'
 gem 'openssl'
 
+gem 'active_link_to'
 gem 'ransack'
 
 group :test do

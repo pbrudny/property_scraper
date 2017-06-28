@@ -15,14 +15,10 @@ class Ad < ApplicationRecord
   validates :status, presence: true
   validates :load, presence: true
 
-  scope :new_ads, -> { where status: %w(new) }
-  scope :interesting, -> { where status: %w(interesting) }
-
-  class << self
-    def ransackable_scopes(auth_object = nil)
-      %w(new_ads interesting)
-    end
-  end
+  scope :new_ads, -> { where status: 'new' }
+  scope :interesting, -> { where status: 'interesting' }
+  scope :in_progress, -> { where status: 'in_progress' }
+  scope :accepted, -> { where status: 'accepted' }
 
   def mark_interesting!
     update(status: 'interesting')
