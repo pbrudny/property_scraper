@@ -6,10 +6,6 @@ module Scrapers
         self.agent = agent
       end
 
-      def tipologia
-        #TODO
-      end
-
       def main_image
         image = html_doc.xpath("//div[@class='photo-handler rel inlblk']/img")
         image.first['src'] if image.present?

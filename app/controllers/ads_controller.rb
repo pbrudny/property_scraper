@@ -2,7 +2,8 @@ class AdsController < ApplicationController
   before_action :set_ad, only: %i(show edit update not_interesting interesting accepted rejected in_progress)
 
   def index
-    @q = Ad.ransack(params[:q])
+    search_params = { status_eq: 'new' } if params[:q].blank?
+    @q = Ad.ransack(search_params)
     @ads = @q.result(distinct: true)
   end
 
