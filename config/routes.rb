@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stats/general'
+
   resources :appointments
   resources :loads, only: [:index, :show]
   resources :alerts
