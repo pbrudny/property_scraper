@@ -50,6 +50,9 @@ gem 'nokogiri'
 gem 'openssl'
 
 gem 'ransack'
+gem 'chartkick'
+gem 'groupdate'
+gem 'hightop'
 
 group :test do
   gem 'vcr'

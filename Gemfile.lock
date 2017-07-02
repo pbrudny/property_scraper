@@ -55,6 +55,7 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
     builder (3.2.3)
+    chartkick (2.2.4)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -76,7 +77,11 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (3.2.0)
+      activesupport (>= 3)
     hashdiff (0.3.4)
+    hightop (0.2.0)
+      activerecord
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.1)
@@ -233,8 +238,11 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
+  chartkick
   coffee-rails (~> 4.2)
   font-awesome-rails
+  groupdate
+  hightop
   jquery-rails
   light_gallery_rails!
   listen (~> 3.0.5)
