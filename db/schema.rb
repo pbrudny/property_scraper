@@ -85,13 +85,6 @@ ActiveRecord::Schema.define(version: 20170613212829) do
     t.index ["ad_id"], name: "index_notes_on_ad_id", using: :btree
   end
 
-  create_table "price_ranges", force: :cascade do |t|
-    t.integer  "from"
-    t.integer  "to"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "search_links", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
