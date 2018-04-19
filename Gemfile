@@ -31,7 +31,6 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'light_gallery_rails', git: 'https://github.com/stNicolaas/light-gallery-rails.git'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
@@ -53,6 +52,9 @@ gem 'ransack'
 gem 'chartkick'
 gem 'groupdate'
 gem 'hightop'
+
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
 
 group :test do
   gem 'vcr'

@@ -88,3 +88,4 @@ module Scrapers
     end
   end
 end
+
