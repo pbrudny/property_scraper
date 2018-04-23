@@ -18,7 +18,10 @@ module Ads
     attr_accessor :search_links, :load
 
     def notify_about_new(new_ads)
-      AdMailer.new_ads(new_ads).deliver_now
+      UserMessage.transaction do
+        result = AdMailer.new_ads(new_ads).deliver_now
+        UserMessage.create!(result: result)
+      end
     end
 
     def scraped_new_ads(search_link)
