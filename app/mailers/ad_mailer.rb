@@ -3,6 +3,6 @@ class AdMailer < ApplicationMailer
     @user = User.first
     @search_link_with_ads  = ads
     @ads_number = ads.flatten.count - ads.count
-    mail(to: @user.email, bcc: 'pbrudny@gmail.com', subject: 'New apartments for you!')
+    mail(to: @user.email, subject: 'New apartments for you!')
   end
 end
