@@ -24,8 +24,9 @@ module Scrapers
 
       def publicated_at
         raw_date = html_doc.xpath('//div[contains(@class, "offer-titlebox__details")]/em/text()')
-        date = raw_date.to_s.strip.gsub(',','').split
-        DateTime.parse "#{date[5]} #{eng_month[date[4]]} #{date[3]} #{date[2]}"
+        date = raw_date.to_s.strip.gsub(',','').split('às ').last.split
+        date_string = "#{date[3]} #{eng_month[date[2]]} #{date[1]} #{date[0]}"
+        DateTime.parse date_string
       end
 
       def eng_month
