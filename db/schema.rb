@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423182813) do
+ActiveRecord::Schema.define(version: 20180501150606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "ads", force: :cascade do |t|
     t.string   "title"
@@ -27,11 +28,12 @@ ActiveRecord::Schema.define(version: 20180423182813) do
     t.string   "image_path"
     t.string   "location"
     t.datetime "publicated_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "search_link_id", null: false
-    t.integer  "load_id",        null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "search_link_id",              null: false
+    t.integer  "load_id",                     null: false
     t.string   "status"
+    t.text     "images",         default: [],              array: true
     t.index ["district_id"], name: "index_ads_on_district_id", using: :btree
   end
 
@@ -60,14 +62,6 @@ ActiveRecord::Schema.define(version: 20180423182813) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string   "url"
-    t.integer  "ad_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ad_id"], name: "index_images_on_ad_id", using: :btree
   end
 
   create_table "loads", force: :cascade do |t|
@@ -120,7 +114,6 @@ ActiveRecord::Schema.define(version: 20180423182813) do
   add_foreign_key "alerts", "search_links"
   add_foreign_key "appointments", "ads"
   add_foreign_key "appointments", "users"
-  add_foreign_key "images", "ads"
   add_foreign_key "notes", "ads"
   add_foreign_key "search_links", "districts"
   add_foreign_key "search_links", "sites"

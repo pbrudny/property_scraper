@@ -56,6 +56,8 @@ gem 'hightop'
 gem 'selenium-webdriver'
 gem 'chromedriver-helper'
 
+gem 'ruby-trello'
+
 group :test do
   gem 'vcr'
   gem 'webmock'

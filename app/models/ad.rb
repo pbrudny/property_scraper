@@ -5,7 +5,6 @@ class Ad < ApplicationRecord
   belongs_to :district
   belongs_to :search_link
 
-  has_many :images, dependent: :destroy
   has_many :appointments, dependent: :destroy
   has_many :notes, dependent: :destroy
 
@@ -41,6 +40,6 @@ class Ad < ApplicationRecord
   end
 
   def images_list
-    [image_path] + images.map(&:url)
+    [image_path] + images
   end
 end

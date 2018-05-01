@@ -16,14 +16,7 @@ module Scrapers
             if Ad.find_by(url: link.value).present?
               puts "Link existed! #{link.value}"
             else
-              puts "Adding link #{link}"
-              parser = Scrapers::Olx::Parser.new(link, agent)
-              if (new_ad = create_ad(parser, link)).valid?
-                parser.images.each { |image_url| new_ad.images.create(url: image_url) }
-                new_ads << new_ad
-              else
-                @problems << ["Scraping #{link.value} with errors: #{new_ad.errors.full_messages} "]
-              end
+             add_link(link, new_ads)
             end
           end
         end
@@ -34,6 +27,19 @@ module Scrapers
       private
 
       attr_accessor :url, :search_link, :load
+
+      def add_link(link, new_ads)
+        puts "Adding link #{link}"
+        parser = Scrapers::Olx::Parser.new(link, agent)
+        if (new_ad = create_ad(parser, link)).valid?
+          new_ads << new_ad
+        else
+          @problems << ["Scraping #{link.value} with AR errors: #{new_ad.errors.full_messages} "]
+        end
+      rescue => e
+        puts " Scraping #{link.value} with errors: #{e} "
+        @problems << ["Scraping #{link.value} with errors: #{e} "]
+      end
 
       def url_with_page(page_index)
         "#{url}&page=#{page_index}"
@@ -51,17 +57,20 @@ module Scrapers
       end
 
       def create_ad(parser, link)
+        raise 'OFFER MISSING!' if parser.offer_id.nil?
+
         search_link.ads.create(
+          offer_id: parser.offer_id,
           title: parser.title,
           url: link,
           phone: parser.phone_number,
           price: parser.price,
           district: District.first,
-          offer_id: parser.offer_id,
           tipologia: 'T1',
           image_path: parser.main_image,
           status: 'new',
           load_id: load.id,
+          images: parser.images,
           description: parser.description,
           publicated_at: parser.publicated_at,
           location: parser.location

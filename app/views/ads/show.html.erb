@@ -41,20 +41,9 @@
       </div>
     <hr>
     <div class='row'>
-      <div class="col col-md-1">
-        <div id="lightGallery">
-          <% @ad.images_list.each do |image_url| %>
-              <div data-src="<%= image_url %>">
-                <img src="<%= image_url %>" class="img-rounded"  width="40" height="33"/>
-              </div>
-          <% end %>
-        </div>
-      </div>
-
       <div class="col col-md-4">
         <img src="<%= @ad.image_path %> " class="img-rounded"  width="304" height="236">
       </div>
-
       <div class="col col-md-3 details">
         <div class='row'>
           <strong>Location: </strong>
@@ -97,7 +86,6 @@
             </button>
           </li>
         </ul>
-
       </div>
     </div>
     <hr>
@@ -106,6 +94,13 @@
   </div>
 </div>
 
+<% @ad.images_list.each do |image_url| %>
+  <div class='row'>
+    <div class="col col-md-12">
+      <img src="<%= image_url %>" class="img-rounded" />
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'Back', ads_path %>
 
@@ -164,60 +159,4 @@
 </div>
 
 <div class="clear"></div>
-
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#lightGallery").lightGallery(
-                {
-                    mode: 'slide',
-                    useCSS: true,
-                    cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-                    easing: 'linear', //'for jquery animation',//
-                    speed: 600,
-                    addClass: '',
-
-                    closable: true,
-                    loop: false,
-                    auto: false,
-                    pause: 4000,
-                    escKey: true,
-                    controls: true,
-                    hideControlOnEnd: false,
-
-                    preload: 2, //number of preload slides. will exicute only after the current slide is fully loaded. ex:// you clicked on 4th image and if preload = 1 then 3rd slide and 5th slide will be loaded in the background after the 4th slide is fully loaded.. if preload is 2 then 2nd 3rd 5th 6th slides will be preloaded.. ... ...
-                    showAfterLoad: true,
-                    selector: null,
-                    index: false,
-
-                    lang: {
-                        allPhotos: 'All photos'
-                    },
-                    counter: false,
-
-                    exThumbImage: false,
-                    thumbnail: true,
-                    showThumbByDefault:false,
-                    animateThumb: true,
-                    currentPagerPosition: 'middle',
-                    thumbWidth: 100,
-                    thumbMargin: 5,
-
-
-                    mobileSrc: false,
-                    mobileSrcMaxWidth: 640,
-                    swipeThreshold: 50,
-                    enableTouch: true,
-                    enableDrag: true,
-
-                    vimeoColor: 'CCCCCC',
-                    videoAutoplay: true,
-                    videoMaxWidth: '855px',
-
-                    dynamic: false,
-                    dynamicEl: []
-                }
-        );
-    });
-</script>
 

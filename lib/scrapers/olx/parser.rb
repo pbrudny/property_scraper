@@ -16,10 +16,8 @@ module Scrapers
       end
 
       def offer_id
-        html_doc.
-          xpath('//div[contains(@class, "offer-titlebox__details")]/em/small/text()')
-          .to_s.split(':')
-          .last.strip
+        offer = html_doc.xpath('//div[contains(@class, "offer-titlebox__details")]/em/small/text()')
+        offer.to_s.split(':').last.strip if offer.present?
       end
 
       def publicated_at
