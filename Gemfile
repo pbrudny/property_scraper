@@ -57,6 +57,8 @@ gem 'selenium-webdriver'
 gem 'chromedriver-helper'
 
 gem 'ruby-trello'
+gem 'launchy'
+gem 'figaro'
 
 group :test do
   gem 'vcr'

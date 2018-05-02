@@ -20,7 +20,11 @@ class Ad < ApplicationRecord
   scope :accepted, -> { where status: 'accepted' }
 
   def mark_interesting!
-    update(status: 'interesting')
+    Ads::MarkInterestingAd.new(self).call
+  end
+
+  def interesting?
+    status == 'interesting'
   end
 
   def mark_not_interesting!
